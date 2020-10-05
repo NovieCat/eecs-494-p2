@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Referenced from:
+// https://answers.unity.com/questions/1255334/drawing-a-custom-graphics-line-between-two-objects.html
+// https://answers.unity.com/questions/1312246/how-to-set-startwidth-and-endwidth-of-linerenderer.html
 public class LineToTarget : MonoBehaviour
 {
     public GameObject lineTarget;

@@ -23,10 +23,27 @@ public class PlayerMovement : MonoBehaviour
         newVelocity.x = Input.GetAxis("Horizontal") * moveSpeed;
 
         // Vertical
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded()) {
             newVelocity.y = jumpPower;
         }
 
         rigid.velocity = newVelocity;
+    }
+
+    // check if player is grounded
+    public bool IsGrounded(){
+        Collider col = this.GetComponent<Collider>();
+
+        // Ray from the center of the collider down.
+        Ray ray = new Ray(col.bounds.center, Vector3.down);
+
+        // A bit smaller than the actual radius so it doesn't catch on walls.
+        float radius = col.bounds.extents.x - .05f;
+
+        // A bit below the bottom
+        float fullDistance = col.bounds.extents.y + .05f;
+        
+        if (Physics.SphereCast(ray, radius, fullDistance)) return true;
+        else return false;
     }
 }
