@@ -41,6 +41,8 @@
      <Compile Include="Assets\Scripts\FollowTarget.cs" />
      <Compile Include="Assets\Scripts\Follower.cs" />
      <Compile Include="Assets\Scripts\GameControl.cs" />
+     <Compile Include="Assets\Scripts\Goal.cs" />
+     <Compile Include="Assets\Scripts\HasPower.cs" />
      <Compile Include="Assets\Scripts\LineToTarget.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />

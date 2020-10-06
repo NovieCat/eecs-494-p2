@@ -1,9 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
+    public static GameControl instance;
+
+    // Called before start
+    void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +31,10 @@ public class GameControl : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ReloadStage()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

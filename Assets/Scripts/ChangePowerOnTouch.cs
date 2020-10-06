@@ -14,17 +14,26 @@ public class ChangePowerOnTouch : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Got collision with: " + other.tag);
-        if(other.tag == "Follower") {
-            Debug.Log(other.GetComponent<Follower>().GetPower());
-            int newPower = other.GetComponent<Follower>().GetPower() - 1;
-            if (newPower < 0) {
-                other.GetComponent<Follower>().SetPower(0);
-            } else {
-                other.GetComponent<Follower>().SetPower(newPower);
-            }
-            Debug.Log(other.GetComponent<Follower>().GetPower());
+        Debug.Log("Got collision with: " + other.tag + " " + (other.GetComponent<HasPower>() == null));
+        if (other.GetComponent<HasPower>() == null) return;
 
+        if (other.tag == "Player") {
+            if (other.GetComponent<Player>().IsInvincible()) return;
+
+            // Trigger IFrames
+            other.GetComponent<Player>().IFramesTriggered();
+        }
+
+        Debug.Log(other.GetComponent<HasPower>().GetPower());
+        int newPower = other.GetComponent<HasPower>().GetPower() - 1;
+        if (newPower < 0) {
+            other.GetComponent<HasPower>().SetPower(0);
+        } else {
+            other.GetComponent<HasPower>().SetPower(newPower);
+        }
+        Debug.Log(other.GetComponent<HasPower>().GetPower());
+
+        if (other.tag == "Follower") {
             // "Deactivate" gate
             Destroy(this.gameObject);
         }
