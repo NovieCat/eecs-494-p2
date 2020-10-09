@@ -6,10 +6,13 @@ using UnityEngine;
 // https://answers.unity.com/questions/209573/how-to-change-material-color-of-an-object.html
 public class Follower : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
+    public Sprite neutralizedSprite;
+
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<Renderer>().material.color = Color.cyan;
+        // gameObject.GetComponent<Renderer>().material.color = Color.cyan;
     }
 
     // Update is called once per frame
@@ -19,7 +22,9 @@ public class Follower : MonoBehaviour
             GetComponent<FollowTarget>().enabled = false;
             GetComponent<LineToTarget>().RemoveLine();
             GetComponent<LineToTarget>().enabled = false;
-            gameObject.GetComponent<Renderer>().material.color = Color.white;
+            GetComponent<Rigidbody>().useGravity = true;
+            // gameObject.GetComponent<Renderer>().material.color = Color.white;
+            spriteRenderer.sprite = neutralizedSprite;
         }
     }
 

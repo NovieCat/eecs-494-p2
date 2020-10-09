@@ -8,6 +8,8 @@ public class GameControl : MonoBehaviour
 {
     public static GameControl instance;
 
+    private bool allowPlayerInput = true;
+
     // Called before start
     void Awake()
     {
@@ -36,5 +38,14 @@ public class GameControl : MonoBehaviour
     public void ReloadStage()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void SetAllowPlayerInput(bool allow) {
+        Debug.Log("Setting input to: " + allow);
+        allowPlayerInput = allow;
+    }
+
+    public bool GetAllowPlayerInput() {
+        return allowPlayerInput;
     }
 }

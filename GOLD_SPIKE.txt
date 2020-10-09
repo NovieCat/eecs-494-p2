@@ -1,0 +1,1 @@
+The gold spike mechanic is a ball that follows the player. It can kill the player if it touches the player unless it's "power" is reduced to 0 (it turns white when reduced) through passing it through green gates.

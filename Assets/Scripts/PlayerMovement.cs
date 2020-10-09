@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameControl.instance.GetAllowPlayerInput()) return;
+
         Vector3 newVelocity = rigid.velocity;
 
         // Horizontal
