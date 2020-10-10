@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BounceBack.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\ChangePowerOnTouch.cs" />
      <Compile Include="Assets\Scripts\FacePlayer.cs" />
@@ -44,6 +45,7 @@
      <Compile Include="Assets\Scripts\GameControl.cs" />
      <Compile Include="Assets\Scripts\Goal.cs" />
      <Compile Include="Assets\Scripts\HasPower.cs" />
+     <Compile Include="Assets\Scripts\HealthText.cs" />
      <Compile Include="Assets\Scripts\LineToTarget.cs" />
      <Compile Include="Assets\Scripts\MoveWithPlayer.cs" />
      <Compile Include="Assets\Scripts\PauseButton.cs" />

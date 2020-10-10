@@ -30,25 +30,23 @@ public class Player : MonoBehaviour
     }
 
     public void IFramesTriggered() {
-        Debug.Log("Player IFrames Triggered");
         invincible = true;
         StartCoroutine(IFrameEffect());
     }
 
     IEnumerator IFrameEffect() {
-        // Set player's opacity to half
-        // Color tempColor = GetComponent<Renderer>().material.GetColor("_Color");
-        // tempColor.a = 0.5f;
-        // GetComponent<Renderer>().material.SetColor("_Color", tempColor);
-        gameObject.GetComponent<Renderer>().material.color = Color.grey;
+        Color tmp = GetComponentInChildren<TextMesh>().color;
+        
+        // Show damage
+        GetComponentInChildren<SpriteRenderer>().material.color = Color.grey;
+        GetComponentInChildren<TextMesh>().color = Color.red;
 
         // Wait for invincibility to fall off
         yield return new WaitForSeconds(1.0f);
 
         // Return player to original status
-        // tempColor.a = 1.0f;
-        // GetComponent<Renderer>().material.SetColor("_Color", tempColor);
-        gameObject.GetComponent<Renderer>().material.color = Color.white;
+        GetComponentInChildren<SpriteRenderer>().material.color = Color.white;
+        GetComponentInChildren<TextMesh>().color = tmp;
         invincible = false;
     }
 }

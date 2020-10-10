@@ -25,6 +25,11 @@ public class Follower : MonoBehaviour
             GetComponent<Rigidbody>().useGravity = true;
             // gameObject.GetComponent<Renderer>().material.color = Color.white;
             spriteRenderer.sprite = neutralizedSprite;
+            transform.Find("HealthText").gameObject.SetActive(false);
+
+            if (GetComponent<Rigidbody>().velocity == Vector3.zero) {
+                GetComponent<SphereCollider>().enabled = true;
+            }
         }
     }
 
