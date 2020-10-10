@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     GameObject currentRoom;
-    private bool invincible;
+    // private bool invincible;
 
     private void Update() {
         if (GetComponent<HasPower>().GetPower() <= 0) {
@@ -25,28 +25,28 @@ public class Player : MonoBehaviour
         return currentRoom;
     }
 
-    public bool IsInvincible(){
-        return invincible;
-    }
+    // public bool IsInvincible(){
+    //     return invincible;
+    // }
 
-    public void IFramesTriggered() {
-        invincible = true;
-        StartCoroutine(IFrameEffect());
-    }
+    // public void IFramesTriggered() {
+    //     invincible = true;
+    //     StartCoroutine(IFrameEffect());
+    // }
 
-    IEnumerator IFrameEffect() {
-        Color tmp = GetComponentInChildren<TextMesh>().color;
+    // IEnumerator IFrameEffect() {
+    //     Color tmp = GetComponentInChildren<TextMesh>().color;
         
-        // Show damage
-        GetComponentInChildren<SpriteRenderer>().material.color = Color.grey;
-        GetComponentInChildren<TextMesh>().color = Color.red;
+    //     // Show damage
+    //     GetComponentInChildren<SpriteRenderer>().material.color = Color.grey;
+    //     GetComponentInChildren<TextMesh>().color = Color.red;
 
-        // Wait for invincibility to fall off
-        yield return new WaitForSeconds(1.0f);
+    //     // Wait for invincibility to fall off
+    //     yield return new WaitForSeconds(1.0f);
 
-        // Return player to original status
-        GetComponentInChildren<SpriteRenderer>().material.color = Color.white;
-        GetComponentInChildren<TextMesh>().color = tmp;
-        invincible = false;
-    }
+    //     // Return player to original status
+    //     GetComponentInChildren<SpriteRenderer>().material.color = Color.white;
+    //     GetComponentInChildren<TextMesh>().color = tmp;
+    //     invincible = false;
+    // }
 }

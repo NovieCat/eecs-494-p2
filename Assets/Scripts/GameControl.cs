@@ -64,6 +64,8 @@ public class GameControl : MonoBehaviour
 
         //Win effect
         else {
+            player.GetComponent<HasPower>().SetInvincible(true);
+
             particleEffect.SetActive(true);
             yield return new WaitForSeconds(1f);
             // particleEffect.transform.rotation = Quaternion.Euler(-20, -90, -30);

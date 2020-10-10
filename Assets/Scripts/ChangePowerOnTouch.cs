@@ -16,13 +16,10 @@ public class ChangePowerOnTouch : MonoBehaviour
     {
         Debug.Log("Got collision with: " + other.tag + " " + (other.GetComponent<HasPower>() == null));
         if (other.GetComponent<HasPower>() == null) return;
+        if (other.GetComponent<HasPower>().GetInvincible()) return;
 
-        if (other.tag == "Player") {
-            if (other.GetComponent<Player>().IsInvincible()) return;
-
-            // Trigger IFrames
-            other.GetComponent<Player>().IFramesTriggered();
-        }
+        // Trigger IFrames
+        other.GetComponent<HasPower>().IFramesTriggered();
 
         Debug.Log(other.GetComponent<HasPower>().GetPower());
         int newPower = other.GetComponent<HasPower>().GetPower() - 1;

@@ -33,7 +33,7 @@ public class Follower : MonoBehaviour
     void OnCollisionEnter(Collision collisionInfo)
     {
         if (collisionInfo.gameObject.tag == "Player") {
-            if (GetComponent<HasPower>().GetPower() != 0) {
+            if (GetComponent<HasPower>().GetPower() != 0 && collisionInfo.gameObject.GetComponent<HasPower>().GetInvincible() == false) {
                 // Game Over
                 StopFollowing();
                 collisionInfo.gameObject.GetComponent<HasPower>().SetPower(0);
