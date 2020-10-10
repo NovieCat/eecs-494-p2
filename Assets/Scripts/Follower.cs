@@ -19,11 +19,8 @@ public class Follower : MonoBehaviour
     void Update()
     {
         if (GetComponent<HasPower>().GetPower() <= 0) {
-            GetComponent<FollowTarget>().enabled = false;
-            GetComponent<LineToTarget>().RemoveLine();
-            GetComponent<LineToTarget>().enabled = false;
+            StopFollowing();
             GetComponent<Rigidbody>().useGravity = true;
-            // gameObject.GetComponent<Renderer>().material.color = Color.white;
             spriteRenderer.sprite = neutralizedSprite;
             transform.Find("HealthText").gameObject.SetActive(false);
 
@@ -37,8 +34,16 @@ public class Follower : MonoBehaviour
     {
         if (collisionInfo.gameObject.tag == "Player") {
             if (GetComponent<HasPower>().GetPower() != 0) {
-                GameControl.instance.ReloadStage();     //  TODO game over
+                // Game Over
+                StopFollowing();
+                collisionInfo.gameObject.GetComponent<HasPower>().SetPower(0);
             }
         }
+    }
+
+    void StopFollowing(){
+        GetComponent<FollowTarget>().enabled = false;
+        GetComponent<LineToTarget>().RemoveLine();
+        GetComponent<LineToTarget>().enabled = false;
     }
 }

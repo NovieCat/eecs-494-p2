@@ -9,6 +9,7 @@ public class PlayerDirection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameControl.instance.GetAllowPlayerInput()) return;
         
         //Horizontal
         float horizontalAxis = Input.GetAxis("Horizontal");

@@ -21,12 +21,15 @@ public class Goal : MonoBehaviour
                 Destroy(other.gameObject); // TODO fade?
                 GetComponent<Renderer>().material.color = Color.yellow;
             }
-            if (other.tag == "Player" && gotGhost) GameControl.instance.ReloadStage();     //TODO victory
+            if (other.tag == "Player" && gotGhost) {
+                //Goal
+                StartCoroutine(GameControl.instance.EndGameEffect(other.gameObject, true));
+            }
         }
 
         else if (other.tag == "Player") {
             //Goal
-            GameControl.instance.ReloadStage();     //TODO victory
+            StartCoroutine(GameControl.instance.EndGameEffect(other.gameObject, true));
         }
     }
 }

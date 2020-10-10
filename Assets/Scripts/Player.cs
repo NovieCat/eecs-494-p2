@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
     private void Update() {
         if (GetComponent<HasPower>().GetPower() <= 0) {
-            GameControl.instance.ReloadStage();     //  TODO game over
+            StartCoroutine(GameControl.instance.EndGameEffect(this.gameObject, false));
         }
     }
 
