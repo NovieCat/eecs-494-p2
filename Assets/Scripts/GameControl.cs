@@ -8,7 +8,10 @@ public class GameControl : MonoBehaviour
 {
     public static GameControl instance;
 
+
     private bool allowPlayerInput = true;
+    private bool inEndSequence = false;
+    
 
     // Called before start
     void Awake()
@@ -42,10 +45,14 @@ public class GameControl : MonoBehaviour
 
     public IEnumerator EndGameEffect (GameObject player, bool won) {
         SetAllowPlayerInput(false);
+        inEndSequence = true;
+        player.GetComponent<Player>().PlayEndGameSound(won);
         
         GameObject particleEffect = player.transform.Find("Particles").gameObject;
 
         //Lose effect
+        // Fade referenced from:
+        // https://answers.unity.com/questions/654836/unity2d-sprite-fade-in-and-out.html
         if (!won) {
             particleEffect.transform.rotation = Quaternion.Euler(-90, -90, -30);
             ParticleSystem.MainModule psMain = particleEffect.GetComponent<ParticleSystem>().main;
@@ -77,11 +84,18 @@ public class GameControl : MonoBehaviour
     }
 
     public void SetAllowPlayerInput(bool allow) {
-        Debug.Log("Setting input to: " + allow);
         allowPlayerInput = allow;
     }
 
     public bool GetAllowPlayerInput() {
         return allowPlayerInput;
+    }
+
+    // public void SetInEndSequence(bool ending) {
+    //     inEndSequence = ending;
+    // }
+
+    public bool GetInEndSequence() {
+        return inEndSequence;
     }
 }

@@ -5,10 +5,22 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     GameObject currentRoom;
-    // private bool invincible;
+    AudioSource audioSource;
+
+    public AudioClip goalSFX;
+    public AudioClip deathSFX;
+    
+
+    // Called before start
+    void Awake()
+    {
+        audioSource = this.GetComponent<AudioSource>();
+    }
 
     private void Update() {
         if (GetComponent<HasPower>().GetPower() <= 0) {
+            if (GameControl.instance.GetInEndSequence()) return;
+            // GameControl.instance.PlayEndGameSound(false);
             StartCoroutine(GameControl.instance.EndGameEffect(this.gameObject, false));
         }
     }
@@ -25,28 +37,8 @@ public class Player : MonoBehaviour
         return currentRoom;
     }
 
-    // public bool IsInvincible(){
-    //     return invincible;
-    // }
-
-    // public void IFramesTriggered() {
-    //     invincible = true;
-    //     StartCoroutine(IFrameEffect());
-    // }
-
-    // IEnumerator IFrameEffect() {
-    //     Color tmp = GetComponentInChildren<TextMesh>().color;
-        
-    //     // Show damage
-    //     GetComponentInChildren<SpriteRenderer>().material.color = Color.grey;
-    //     GetComponentInChildren<TextMesh>().color = Color.red;
-
-    //     // Wait for invincibility to fall off
-    //     yield return new WaitForSeconds(1.0f);
-
-    //     // Return player to original status
-    //     GetComponentInChildren<SpriteRenderer>().material.color = Color.white;
-    //     GetComponentInChildren<TextMesh>().color = tmp;
-    //     invincible = false;
-    // }
+    public void PlayEndGameSound (bool won) {
+        if (!won) audioSource.PlayOneShot(deathSFX, 1f);
+        else if (won) audioSource.PlayOneShot(goalSFX, 1f);
+    }
 }

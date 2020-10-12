@@ -33,7 +33,7 @@ public class HasPower : MonoBehaviour
     }
 
     IEnumerator IFrameEffect() {
-        Debug.Log("In IFrameEffect");
+        // Debug.Log("In IFrameEffect");
         Color tmp = GetComponentInChildren<TextMesh>().color;
         
         // Show damage
