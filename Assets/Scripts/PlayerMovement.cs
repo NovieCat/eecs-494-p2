@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         newVelocity.x = Input.GetAxis("Horizontal") * moveSpeed;
 
         // Vertical
-        if (Input.GetKeyDown(KeyCode.UpArrow) && IsGrounded()) {
+        if (Input.GetAxis("Vertical") > 0 && IsGrounded()) {
             newVelocity.y = jumpPower;
         }
 

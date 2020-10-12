@@ -5,17 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     GameObject currentRoom;
-    AudioSource audioSource;
-
-    public AudioClip goalSFX;
-    public AudioClip deathSFX;
-    
-
-    // Called before start
-    void Awake()
-    {
-        audioSource = this.GetComponent<AudioSource>();
-    }
 
     private void Update() {
         if (GetComponent<HasPower>().GetPower() <= 0) {
@@ -35,10 +24,5 @@ public class Player : MonoBehaviour
 
     public GameObject GetCurrentRoom() {
         return currentRoom;
-    }
-
-    public void PlayEndGameSound (bool won) {
-        if (!won) audioSource.PlayOneShot(deathSFX, 1f);
-        else if (won) audioSource.PlayOneShot(goalSFX, 1f);
     }
 }

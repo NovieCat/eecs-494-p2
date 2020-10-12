@@ -46,7 +46,7 @@ public class GameControl : MonoBehaviour
     public IEnumerator EndGameEffect (GameObject player, bool won) {
         SetAllowPlayerInput(false);
         inEndSequence = true;
-        player.GetComponent<Player>().PlayEndGameSound(won);
+        player.GetComponent<PlayerSFX>().PlayEndGameSound(won);
         
         GameObject particleEffect = player.transform.Find("Particles").gameObject;
 
