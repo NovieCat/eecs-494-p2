@@ -24,6 +24,10 @@ public class GameControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (Time.timeScale == 0){
+            Time.timeScale = 1;
+        }
     }
 
     // Start is called before the first frame update
