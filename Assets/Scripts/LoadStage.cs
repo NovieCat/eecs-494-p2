@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadLevelButton : MonoBehaviour
+public class LoadStage : MonoBehaviour
 {
-    // public string levelName;
-
     // Referenced from:
     // https://answers.unity.com/questions/836635/can-ui-buttons-load-scenes.html
-    public void NextLevelButton(string levelName)
+    public void LoadStageByName(string stageName)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(levelName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(stageName);
     }
 }

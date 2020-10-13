@@ -9,7 +9,6 @@ public class PauseButton : MonoBehaviour {
         pauseMenu.SetActive(false);
     }
     public void TogglePause() {
-        Debug.Log(pauseMenu);
         GameControl.instance.SetAllowPlayerInput(!GameControl.instance.GetAllowPlayerInput());   
         // Time.timeScale = Mathf.Approximately(Time.timeScale, 0.0f) ? 1.0f : 0.0f;
         if(Time.timeScale == 1)
