@@ -16,6 +16,8 @@ public class LineToTarget : MonoBehaviour
     {
         // Add a Line Renderer to the GameObject
         line = this.gameObject.AddComponent<LineRenderer>();
+        line.startColor = Color.white;
+        line.endColor = Color.white;
         line.positionCount = 2;
         line.startWidth = 0.05f;
         line.endWidth = 0.05f;

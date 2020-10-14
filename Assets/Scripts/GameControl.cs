@@ -30,21 +30,30 @@ public class GameControl : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ReloadStage()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void NextStage(string stageName)
+    {
+        switch (stageName) {
+            case "Stage1":
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Stage2");
+                break;
+
+            case "Stage2":
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Stage3");
+                break;
+
+            case "Stage3":
+                UnityEngine.SceneManagement.SceneManager.LoadScene("Stage4");
+                break;
+
+            default:
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+                break;
+        }
     }
 
     public IEnumerator EndGameEffect (GameObject player, bool won) {
@@ -84,7 +93,7 @@ public class GameControl : MonoBehaviour
             // psMain.startColor = Color.yellow;
         }
 
-        ReloadStage();     //TODO goto next stage or menu?
+        NextStage(player.GetComponent<Player>().GetCurrentRoom().name);     //TODO goto next stage or menu?
     }
 
     public void SetAllowPlayerInput(bool allow) {
@@ -94,10 +103,6 @@ public class GameControl : MonoBehaviour
     public bool GetAllowPlayerInput() {
         return allowPlayerInput;
     }
-
-    // public void SetInEndSequence(bool ending) {
-    //     inEndSequence = ending;
-    // }
 
     public bool GetInEndSequence() {
         return inEndSequence;

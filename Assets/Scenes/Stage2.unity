@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 551133276}
   - component: {fileID: 551133277}
   m_Layer: 0
-  m_Name: Stage
+  m_Name: Stage2
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
