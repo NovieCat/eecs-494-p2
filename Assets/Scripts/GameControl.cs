@@ -80,6 +80,8 @@ public class GameControl : MonoBehaviour
                 player.GetComponentInChildren<SpriteRenderer>().material.color = newColor;
                 yield return null;
             }
+
+            ReloadStage();
         }
 
         //Win effect
@@ -88,12 +90,8 @@ public class GameControl : MonoBehaviour
 
             particleEffect.SetActive(true);
             yield return new WaitForSeconds(1f);
-            // particleEffect.transform.rotation = Quaternion.Euler(-20, -90, -30);
-            // ParticleSystem.MainModule psMain = particleEffect.GetComponent<ParticleSystem>().main;
-            // psMain.startColor = Color.yellow;
+            NextStage(player.GetComponent<Player>().GetCurrentRoom().name);
         }
-
-        NextStage(player.GetComponent<Player>().GetCurrentRoom().name);     //TODO goto next stage or menu?
     }
 
     public void SetAllowPlayerInput(bool allow) {
