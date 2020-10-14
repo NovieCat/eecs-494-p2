@@ -7,13 +7,18 @@ using UnityEngine;
 public class FollowTarget : MonoBehaviour
 {
     public float followSpeed = 1.0f;
+    public float speedUpDist = 7.0f;
     public GameObject followTarget;
 
     // Update is called once per frame
     void Update()
     {
+        float speed = followSpeed;
+        if (Vector3.Distance(transform.position, followTarget.transform.position) > speedUpDist) {
+            speed *= 2;
+        }
         transform.position = Vector3.MoveTowards(transform.position,
                                                  followTarget.transform.position,
-                                                 followSpeed * Time.deltaTime);
+                                                 speed * Time.deltaTime);
     }
 }
